@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Supreme Advertising - Billboards & Large Format Displays</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/logo.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Rubik:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom Style for Gallery, Cards & Lightbox Modal -->
+    <style>
+        .gallery-img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .gallery-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Fixed Fullscreen Lightbox Modal */
+        #imageModal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-modal-content {
+            max-width: 85vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 5px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+        }
+
+        .image-modal-close {
+            position: fixed;
+            top: 25px;
+            right: 40px;
+            color: #ffffff;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 100000;
+            line-height: 1;
+        }
+        .image-modal-close:hover {
+            color: #0194d8;
+        }
+
+        /* Next & Previous Navigation Buttons */
+        .modal-nav-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 18px 22px;
+            font-size: 26px;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+            z-index: 100000;
+        }
+        .modal-nav-btn:hover {
+            background-color: #0194d8;
+        }
+        .modal-prev {
+            left: 30px;
+        }
+        .modal-next {
+            right: 30px;
+        }
+        .page-header {
+            background: linear-gradient(to right, rgba(2, 36, 91, 1) 0%, rgba(2, 36, 91, 0) 100%), url(img/billboards/12.png) center center no-repeat;
+            background-size: cover;
+        }
+        
+        /* Default Laptop View: Ek row me 6 images */
+        .col-custom-gallery {
+            flex: 0 0 16.6666%;
+            max-width: 16.6666%;
+            padding-left: 6px;
+            padding-right: 6px;
+            margin-bottom: 12px;
+        }
+
+        .gallery-img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Mobile Devices (max-width: 768px): 3 images per row */
+        @media (max-width: 768px) {
+            .col-custom-gallery {
+                flex: 0 0 33.3333% !important;
+                max-width: 33.3333% !important;
+                padding-left: 4px !important;
+                padding-right: 4px !important;
+                margin-bottom: 8px;
+            }
+            
+            .gallery-img {
+                height: 115px !important;
+                object-fit: cover;
+            }
+        }
+
+        /* Custom Card Styles for Content and FAQs */
+        .content-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+            border: 1px solid #eaeaea;
+            transition: transform 0.3s ease;
+        }
+        .content-card:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Interlink Hover Style - Black text, underline only on hover */
+        .content-card a {
+            color: #111111;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .content-card a:hover {
+            color: #0194d8;
+            text-decoration: underline;
+        }
+
+        /* FAQ Style matching reference image */
+        .faq-card {
+            background: #ffffff;
+            border: 2px solid #e1ecf4;
+            border-radius: 16px;
+            padding: 22px 25px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .faq-card:hover, .faq-card.active {
+            border-color: #0194d8;
+            box-shadow: 0 4px 20px rgba(1, 148, 216, 0.1);
+        }
+        .faq-question {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            color: #555;
+            font-size: 15px;
+            margin-top: 12px;
+            margin-bottom: 0;
+            display: none;
+        }
+        .faq-card.active .faq-answer {
+            display: block;
+        }
+        .faq-icon {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0194d8;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark px-0">
+        <div class="row g-0 d-none d-lg-flex" style="background-color: #0194d8 !important;">
+            <div class="col-lg-6 ps-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center text-white">
+                    <span>Follow Us:</span>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-end">
+                <div class="h-100 topbar-right d-inline-flex align-items-center text-white py-2 px-5">
+                    <span class="fs-5 fw-bold me-2"><i class="fa fa-phone-alt me-2"></i>Call Us:</span>
+                    <span class="fs-5 fw-bold">+91 93512 17939 , +91 77339 99071</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
+        <a href="index.html" class="navbar-brand ps-5 me-0 pt-0" style="background-color: white !important; flex-direction: column;">
+            <img src="img/solution-logo-top.png" alt="Logo" style="max-height: 63px;">
+            <img src="img/solution-logo-bottom.png" alt="Logo" style="max-height: 12px;">
+        </a>
+        <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="index.html#service" class="nav-item nav-link">Services</a>
+                <a href="/gallery.html" class="nav-item nav-link">Gallery</a>
+                <a href="career.html" class="nav-item nav-link">Career</a>
+                <a href="index.html#contact" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="index.html#query" class="btn btn-primary px-3 d-none d-lg-block" style="background-color: #0194d8 !important;">Get A Quote</a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-2 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <h1 class="display-3 text-white animated slideInRight">Billboards & Large Format Displays</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb animated slideInRight mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Billboards & Large Format Displays</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Main Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center mb-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="h-100">
+                        <img class="img-fluid w-100 rounded shadow" style="height: 480px !important; object-fit: cover;" src="img/billboards/13.jpeg" alt="Billboards & Large Format Displays">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <p class="fw-medium text-uppercase text-primary mb-2">Service Details</p>
+                    <h1 class="display-5 mb-4">Hoarding Advertising Agencies That Put Your Brand on the Busiest Roads</h1>
+                    <p class="mb-4">Some messages need to be big to be heard. Supreme Advertising creates high-impact billboards and large-format displays along prime highways and high-traffic city locations. Since 1999, brands have trusted us to turn roadside space into round-the-clock visibility.
+                    </p>
+                    
+                    <div class="row pt-2">
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
+                                    <i class="fa fa-envelope-open text-white"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <p class="mb-0 text-muted" style="font-size: 14px;">Email us</p>
+                                    <h6 class="mb-0 fw-bold text-primary" style="font-size: 16px; line-height: 1.4;">supremead.jaipur@gmail.com</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
+                                    <i class="fa fa-phone-alt text-white"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <p class="mb-0 text-muted" style="font-size: 14px;">Call us</p>
+                                    <h6 class="mb-0 fw-bold text-primary" style="font-size: 16px; line-height: 1.4;">+91 93512 17939 ,<br>+91 77339 99071</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Cards Sections -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    
+                    <!-- Why Choose Us Card (Placed at Top) -->
+                    <div class="content-card text-center wow fadeInUp">
+                        <h2 class="mb-3 text-dark fw-bold fs-3">Why Choose Supreme Advertising Among Hoarding Advertising Agencies?</h2>
+                        <div class="row text-center g-3 mt-2">
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="p-3 border rounded bg-light">
+                                    <h4 class="text-primary fw-bold mb-1">25+</h4>
+                                    <p class="mb-0 small fw-bold">Years Experience (Since 1999)</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="p-3 border rounded bg-light">
+                                    <h4 class="text-primary fw-bold mb-1">Expert</h4>
+                                    <p class="mb-0 small fw-bold">Led by Mr. Amjad Siddiqui</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="p-3 border rounded bg-light">
+                                    <h4 class="text-primary fw-bold mb-1">70+</h4>
+                                    <p class="mb-0 small fw-bold">Team Members</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="p-3 border rounded bg-light">
+                                    <h4 class="text-primary fw-bold mb-1">200+</h4>
+                                    <p class="mb-0 small fw-bold">Companies Served</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Why Do Brands & What Makes Our Hoardings in Left & Right Columns -->
+                    <div class="row g-4 mb-4">
+                        <!-- Left Column: Why Do Brands Invest -->
+                        <div class="col-lg-6">
+                            <div class="content-card text-center h-100 wow fadeInUp mb-0">
+                                <h2 class="mb-3 text-dark fw-bold fs-4">Why Do Brands Still Invest in Outdoor Hoarding Advertising?</h2>
+                                <p class="text-muted mb-3 small">Outdoor hoarding advertising reaches people again and again, on the routes they travel every day.</p>
+                                <ul class="list-unstyled text-start small" style="line-height: 1.8;">
+                                    <li class="mb-2"><strong class="text-dark">Always on:</strong> Visible day and night, with no skip button.</li>
+                                    <li class="mb-2"><strong class="text-dark">Massive reach:</strong> One placement is seen by every passing commuter.</li>
+                                    <li class="mb-2"><strong class="text-dark">Instant authority:</strong> Large-scale media signals an established brand.</li>
+                                    <li><strong class="text-dark">Local relevance:</strong> Placement near your store, project or target market.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: What Makes Our Hoardings Built to Last -->
+                        <div class="col-lg-6">
+                            <div class="content-card text-center h-100 wow fadeInUp mb-0">
+                                <h2 class="mb-3 text-dark fw-bold fs-4">What Makes Our Hoardings Built to Last?</h2>
+                                <p class="text-muted mb-3 small">A hoarding is only as good as its condition on day 300. Ours are engineered for it.</p>
+                                <ul class="list-unstyled text-start small" style="line-height: 1.8;">
+                                    <li class="mb-2"><strong class="text-dark">Weather-ready builds:</strong> Designed to withstand weather extremes.</li>
+                                    <li class="mb-2"><strong class="text-dark">Sharp print clarity:</strong> Crisp visuals that read clearly from a distance.</li>
+                                    <li class="mb-2"><strong class="text-dark">Accurate, vibrant colour:</strong> Your brand colours stay true.</li>
+                                    <li><strong class="text-dark">In-house fabrication:</strong> Produced at our own units in Bindayaka and Khatipura, Jaipur.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Which Large Format Displays Can We Create for You? -->
+                    <div class="content-card text-center wow fadeInUp">
+                        <h2 class="mb-3 text-dark fw-bold fs-3">Which Large Format Displays Can We Create for You?</h2>
+                        <ul class="list-unstyled text-center mb-0" style="line-height: 2.2; font-size: 16px;">
+                            <li class="border-bottom pb-2"> <a href="hoarding-advertising-agencies.html">Highway hoardings</a> for long-distance reach and repeated exposure</li>
+                            <li class="border-bottom py-2"> <a href="hoarding-advertising-agencies.html">Large-format billboards</a> in high-traffic urban locations</li>
+                            <li class="pt-2"> <a href="hoarding-advertising-agencies.html">Customised outdoor builds</a> shaped around your site and message</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 4: How Does a Hoarding Fit Into a Bigger Brand Campaign? -->
+                    <div class="content-card text-center wow fadeInUp">
+                        <h2 class="mb-3 text-dark fw-bold fs-3">How Does a Hoarding Fit Into a Bigger Brand Campaign?</h2>
+                        <p class="text-muted mb-0" style="line-height: 1.8;">
+                            Hoardings build awareness. The best campaigns carry that awareness further. Pair your billboard with storefront branding from a retail branding agency in India like us, so recognition continues right up to the counter. Add an <strong class="text-dark">LED advertising screen</strong> in high-footfall areas for messages that change often. As one of <strong class="text-dark">Jaipur's established outdoor advertising companies</strong>, we plan all three as one campaign.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Main Content End -->
+
+
+    <!-- Gallery Section Start (Dynamic Rendering via JavaScript Array) -->
+    <div class="container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="fw-medium text-uppercase text-primary mb-2">Our Gallery</p>
+                <h1 class="display-5 mb-4">Explore Our Work Snapshots</h1>
+            </div>
+            
+            <!-- Gallery container jahan JavaScript se images load hongi -->
+            <div id="galleryContainer"></div>
+        </div>
+    </div>
+    <!-- Gallery Section End -->
+
+
+    <!-- FAQ Section Start (Placed right below the Images / Gallery section) -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
+                <span class="badge bg-light text-primary border px-3 py-2 rounded-pill fw-bold mb-2">● FAQ</span>
+                <h1 class="display-5 mb-4 fw-bold">Frequently asked questions</h1>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-card active" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>What do hoarding advertising agencies do?</span>
+                            <span class="faq-icon">×</span>
+                        </div>
+                        <p class="faq-answer">They help brands choose placements, design the creative, and produce large outdoor displays such as highway hoardings and billboards.</p>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-card" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>Where do you place hoardings?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <p class="faq-answer">Along prime highways and high-traffic urban locations, chosen for maximum visibility.</p>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-card" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>Are your hoardings weather resistant?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <p class="faq-answer">Yes. Our large-format displays are engineered to withstand weather extremes while keeping print sharp and colours vibrant.</p>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-card" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>Can I book a hoarding board online?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <p class="faq-answer">Yes, you can start online. Send your requirement through the enquiry form on our website or by email, and our team will share suitable options.</p>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-card" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>How do I get a quote?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <p class="faq-answer">Call +91 93512 17939 or +91 77339 99071, or email supremead.jaipur@gmail.com.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Call to Action Card -->
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-9 text-center content-card bg-primary text-white py-5">
+                    <h2 class="text-white fw-bold mb-3">Ready to See Your Brand on the Big Stage?</h2>
+                    <p class="text-light mb-4">Tell us your target area and campaign goal. We will recommend the right hoarding format for your brand. Get a free quote today.</p>
+                    <a href="index.html#contact" class="btn btn-light text-primary px-4 py-2 fw-bold rounded-pill">Get A Free Quote</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- FAQ Section End -->
+
+
+    <!-- Fullscreen Image Modal (Lightbox) -->
+    <div id="imageModal">
+        <span class="image-modal-close" onclick="closeModal()">&times;</span>
+        <button class="modal-nav-btn modal-prev" onclick="changeImage(-1)">&#10094;</button>
+        <img class="image-modal-content" id="modalImage">
+        <button class="modal-nav-btn modal-next" onclick="changeImage(1)">&#10095;</button>
+    </div>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s"
+        style="background: #1e75c2 !important;">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Our Office</h5>
+                    <p class="mb-2 text-white"><i class="fa fa-map-marker-alt me-3"></i>Plot NO.99 Kamla Nehru Nagar, Hasanpura-C</p>
+                    <p class="mb-2 text-white"><i class="fa fa-phone-alt me-3"></i>+91 93512 17939 , +91 77339 99071</p>
+                    <p class="mb-2 text-white"><i class="fa fa-envelope me-3"></i>supremead.jaipur@gmail.com</p>
+                    <div class="d-flex pt-3">
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <a class="btn btn-link text-white" href="about.html">About Us</a>
+                    <a class="btn btn-link text-white" href="index.html#contact">Contact Us</a>
+                    <a class="btn btn-link text-white" href="index.html#service">Our Services</a>
+                    <a class="btn btn-link text-white" href="#">Terms & Condition</a>
+                    <a class="btn btn-link text-white" href="#">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Business Hours</h5>
+                    <p class="mb-1 text-white">Monday - Saturday :-</p>
+                    <h6 class="text-light">10:00 am - 08:00 pm</h6>
+                    <p class="mb-1 text-white">Sunday :-</p>
+                    <h6 class="text-light">Closed</h6>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Newsletter</h5>
+                    <p class="text-white">Stay updated with our latest media campaigns and advertising innovations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright bg-dark py-4" style="background: #1e75c2 !important;">
+        <div class="container text-center">
+            <p class="mb-2 text-white">Copyright &copy; All Rights Reserved.</p>
+            <p class="mb-0 text-white">
+                Designed & Developed by <a class="fw-semi-bold text-white" href="https://digitalwhopper.com/">Digital Whopper</a>
+            </p>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Script for Dynamic Gallery Rendering, Lightbox & FAQ Toggle -->
+    <script>
+        const galleryImages = [
+            "img/billboards/1.jpeg",
+            "img/billboards/2.jpeg",
+            "img/billboards/3.jpeg",
+            "img/billboards/4.jpeg",
+            "img/billboards/5.jpeg",
+            "img/billboards/6.jpeg",
+            "img/billboards/7.jpeg",
+            "img/billboards/8.jpeg",
+            "img/billboards/9.png",
+            "img/billboards/10.jpeg",
+            "img/billboards/11.png",
+            "img/billboards/12.png",
+            "img/billboards/13.jpeg",
+            "img/billboards/14.jpeg",
+            "img/billboards/15.jpeg",
+            "img/billboards/16.jpeg",
+            "img/billboards/17.jpeg",
+            "img/billboards/18.jpeg",
+            "img/billboards/19-1.jpeg",
+        ];
+
+        let currentIndex = 0;
+
+        function renderGallery() {
+            const container = document.getElementById("galleryContainer");
+            let html = "";
+            
+            for (let i = 0; i < galleryImages.length; i += 6) {
+                html += '<div class="row g-2 justify-content-center">';
+                for (let j = i; j < i + 6 && j < galleryImages.length; j++) {
+                    html += `
+                        <div class="col-custom-gallery">
+                            <img src="${galleryImages[j]}" alt="Gallery Image ${j+1}" class="gallery-img shadow-sm" onclick="openModal(${j})">
+                        </div>
+                    `;
+                }
+                html += '</div>';
+            }
+            container.innerHTML = html;
+        }
+
+        window.onload = function() {
+            renderGallery();
+        };
+
+        function openModal(index) {
+            currentIndex = index;
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImg.src = galleryImages[currentIndex];
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= galleryImages.length) {
+                currentIndex = 0; 
+            } else if (currentIndex < 0) {
+                currentIndex = galleryImages.length - 1; 
+            }
+            document.getElementById("modalImage").src = galleryImages[currentIndex];
+        }
+
+        // FAQ Toggle Function
+        function toggleFaq(element) {
+            const icon = element.querySelector('.faq-icon');
+            const isActive = element.classList.contains('active');
+
+            if (isActive) {
+                element.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                element.classList.add('active');
+                icon.textContent = '×';
+            }
+        }
+    </script>
+</body>
+
+</html>
