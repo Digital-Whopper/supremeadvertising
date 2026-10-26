@@ -825,3 +825,13 @@ h6,
         transform: translateX(0);
     }
 }
+
+/* user define css  */
+/* Navbar Dropdown Hover Effect */
+/* Navbar dropdown item focus ya active hone par orange color hatane ke liye */
+.navbar-light .navbar-nav .dropdown-menu .dropdown-item:focus, 
+.navbar-light .navbar-nav .dropdown-menu .dropdown-item:active,
+.navbar-light .navbar-nav .dropdown-menu .dropdown-item:hover {
+    background-color: #0194d8 !important; /* Aapke primary blue theme ke mutabiq */
+    color: #ffffff !important;
+}
