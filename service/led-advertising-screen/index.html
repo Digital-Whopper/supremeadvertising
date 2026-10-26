@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>LED Advertising Screen Solutions | Supreme Advertising</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta property="og:title" content="LED Advertising Screen Solutions | Supreme Advertising">
+
+    <meta content="High-definition LED advertising screens and digital hoarding advertising in Jaipur. Run motion-led campaigns with real-time content updates." name="description">
+
+    <!-- Favicon -->
+    <link href="../../img/logo.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Rubik:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="../../lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="../../css/style.css" rel="stylesheet">
+
+    <!-- Custom Style for Gallery, Cards & Lightbox Modal -->
+    <style>
+        .gallery-img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .gallery-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Fixed Fullscreen Lightbox Modal */
+        #imageModal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-modal-content {
+            max-width: 85vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 5px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+        }
+
+        .image-modal-close {
+            position: fixed;
+            top: 25px;
+            right: 40px;
+            color: #ffffff;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 100000;
+            line-height: 1;
+        }
+        .image-modal-close:hover {
+            color: #0194d8;
+        }
+
+        /* Next & Previous Navigation Buttons */
+        .modal-nav-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 18px 22px;
+            font-size: 26px;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+            z-index: 100000;
+        }
+        .modal-nav-btn:hover {
+            background-color: #0194d8;
+        }
+        .modal-prev {
+            left: 30px;
+        }
+        .modal-next {
+            right: 30px;
+        }
+
+        .page-header {
+            background: linear-gradient(to right, rgba(2, 36, 91, 1) 0%, rgba(2, 36, 91, 0) 100%), url(../../img/doh/1.jpeg) center center no-repeat;
+            background-size: cover;
+        }
+
+        /* Default Laptop View: Ek row me 6 images */
+        .col-custom-gallery {
+            flex: 0 0 16.6666%;
+            max-width: 16.6666%;
+            padding-left: 6px;
+            padding-right: 6px;
+            margin-bottom: 12px;
+        }
+
+        .gallery-img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Mobile Devices (max-width: 768px): 3 images per row */
+        @media (max-width: 768px) {
+            .col-custom-gallery {
+                flex: 0 0 33.3333% !important;
+                max-width: 33.3333% !important;
+                padding-left: 4px !important;
+                padding-right: 4px !important;
+                margin-bottom: 8px;
+            }
+            
+            .gallery-img {
+                height: 115px !important;
+                object-fit: cover;
+            }
+        }
+
+        /* Custom Card Styles for Content and FAQs */
+        .content-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+            border: 1px solid #eaeaea;
+            transition: transform 0.3s ease;
+        }
+        .content-card:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Interlink Hover Style - Black text, underline only on hover */
+        .content-card a {
+            color: #111111;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .content-card a:hover {
+            color: #0194d8;
+            text-decoration: underline;
+        }
+
+        /* FAQ Style matching reference image */
+        .faq-card {
+            background: #ffffff;
+            border: 2px solid #e1ecf4;
+            border-radius: 16px;
+            padding: 22px 25px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .faq-card:hover, .faq-card.active {
+            border-color: #0194d8;
+            box-shadow: 0 4px 20px rgba(1, 148, 216, 0.1);
+        }
+        .faq-question {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            color: #555;
+            font-size: 15px;
+            margin-top: 12px;
+            margin-bottom: 0;
+            display: none;
+        }
+        .faq-card.active .faq-answer {
+            display: block;
+        }
+        .faq-icon {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0194d8;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark px-0">
+        <div class="row g-0 d-none d-lg-flex" style="background-color: #0194d8 !important;">
+            <div class="col-lg-6 ps-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center text-white">
+                    <span>Follow Us:</span>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-end">
+                <div class="h-100 topbar-right d-inline-flex align-items-center text-white py-2 px-5">
+                    <span class="fs-5 fw-bold me-2"><i class="fa fa-phone-alt me-2"></i>Call Us:</span>
+                    <span class="fs-5 fw-bold">+91 93512 17939 , +91 77339 99071</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
+        <a href="/" class="navbar-brand ps-5 me-0 pt-0" style="background-color: white !important; flex-direction: column;">
+            <img src="../../img/solution-logo-top.png" alt="Logo" style="max-height: 63px;">
+            <img src="../../img/solution-logo-bottom.png" alt="Logo" style="max-height: 12px;">
+        </a>
+        <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="/" class="nav-item nav-link">Home</a>
+                <a href="/#about" class="nav-item nav-link">About</a>
+    <div class="nav-item dropdown">
+    <a href="../#service" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+    <div class="dropdown-menu m-0 shadow-sm border-0">
+        <a href="/service/hoarding-advertising-agencies" class="dropdown-item">Billboards & Large Format Displays</a>
+        <a href="/service/retail-branding-agency-in-india" class="dropdown-item">Complete Store Branding</a>
+        <a href="/service/led-advertising-screen" class="dropdown-item">Digital Out-of-Home (DOOH)</a>
+    </div>
+</div>
+                <a href="/gallery/" class="nav-item nav-link">Gallery</a>
+                <a href="/career/" class="nav-item nav-link ">Career</a>
+                <a href="/#contact" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="/#query" class="btn btn-primary px-3 d-none d-lg-block" style="background-color: #0194d8 !important;">Get A Quote</a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-2 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <h1 class="display-3 text-white animated slideInRight">Digital Out-of-Home (OOH)</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb animated slideInRight mb-0">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Digital Out-of-Home (OOH)</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Main Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center mb-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="h-100">
+                        <img class="img-fluid w-100 rounded shadow" style="height: 480px !important; object-fit: cover;" src="../../img/doh/1.jpeg" alt="Digital Out-of-Home (OOH)">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <p class="fw-medium text-uppercase text-primary mb-2">Service Details</p>
+                    <h1 class="display-5 mb-4">LED Advertising Screen Solutions That Move With Your Message</h1>
+                    <p class="mb-4">A static board says one thing. A digital screen can say the right thing at the right time. Supreme Advertising brings Digital Out-of-Home (DOOH) advertising to life with high-definition LED displays. Your campaigns move, update and grab attention in high-footfall areas.
+                    </p>
+                    
+                    <div class="row pt-2">
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
+                                    <i class="fa fa-envelope-open text-white"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <p class="mb-0 text-muted" style="font-size: 14px;">Email us</p>
+                                    <h6 class="mb-0 fw-bold text-primary" style="font-size: 16px; line-height: 1.4;">supremead.jaipur@gmail.com</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
+                                    <i class="fa fa-phone-alt text-white"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <p class="mb-0 text-muted" style="font-size: 14px;">Call us</p>
+                                    <h6 class="mb-0 fw-bold text-primary" style="font-size: 16px; line-height: 1.4;">+91 93512 17939 ,<br>+91 77339 99071</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Cards Sections -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    
+                    <!-- Why Choose Us Card (Placed at Top) -->
+                    <div class="content-card text-center wow fadeInUp">
+                        <h2 class="mb-3 text-dark fw-bold fs-3">Why Work With Supreme Advertising on Digital OOH?</h2>
+                        <div class="row text-center g-3 mt-2">
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="p-3 border rounded bg-light">
+                                    <h4 class="text-primary fw-bold mb-1">25+</h4>
+                                    <p class="mb-0 small fw-bold">Years Experience (Since 1999)</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="p-3 border rounded bg-light">
+                                    <h4 class="text-primary fw-bold mb-1">Specialists</h4>
+                                    <p class="mb-0 small fw-bold">LED & Custom Displays</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="p-3 border rounded bg-light">
+                                    <h4 class="text-primary fw-bold mb-1">70+</h4>
+                                    <p class="mb-0 small fw-bold">Team Members</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="p-3 border rounded bg-light">
+                                    <h4 class="text-primary fw-bold mb-1">200+</h4>
+                                    <p class="mb-0 small fw-bold">Companies Served</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- What Is DOOH & Why Choose LED in Left & Right Columns -->
+                    <div class="row g-4 mb-4">
+                        <!-- Left Column: What Is Digital Out-of-Home Advertising? -->
+                        <div class="col-lg-6">
+                            <div class="content-card text-center h-100 wow fadeInUp mb-0">
+                                <h2 class="mb-3 text-dark fw-bold fs-4">What Is Digital Out-of-Home Advertising?</h2>
+                                <p class="text-muted mb-0 small" style="line-height: 1.8;">
+                                    Digital Out-of-Home advertising uses digital screens in public spaces to show moving, changeable brand content. It combines the reach of outdoor media with the flexibility of online ads. Instead of one fixed poster, your brand can run animations, videos and fresh messages on the same display.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Why Choose an LED Advertising Screen Over a Static Board? -->
+                        <div class="col-lg-6">
+                            <div class="content-card text-center h-100 wow fadeInUp mb-0">
+                                <h2 class="mb-3 text-dark fw-bold fs-4">Why Choose an LED Advertising Screen Over a Static Board?</h2>
+                                <ul class="list-unstyled text-start small mt-3" style="line-height: 1.8;">
+                                    <li class="mb-2"><strong class="text-dark">Motion grabs attention:</strong> Movement stops people faster than still images.</li>
+                                    <li class="mb-2"><strong class="text-dark">Real-time content updates:</strong> Change your message without reprinting anything.</li>
+                                    <li class="mb-2"><strong class="text-dark">More than one message:</strong> Rotate offers, products and announcements on one screen.</li>
+                                    <li><strong class="text-dark">Vivid in busy areas:</strong> High-definition displays stay bright and clear in crowded spaces.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Is Digital Hoarding Advertising Right for Your Brand? -->
+                    <div class="content-card text-center wow fadeInUp">
+                        <h2 class="mb-3 text-dark fw-bold fs-3">Is Digital Hoarding Advertising Right for Your Brand?</h2>
+                        <p class="text-muted mb-3">Digital hoarding advertising works best when your message changes often or needs urgency. It suits:</p>
+                        <ul class="list-unstyled text-center mb-0" style="line-height: 2.2; font-size: 15px;">
+                            <li class="border-bottom pb-2"><strong class="text-dark">Product launches</strong>  that need a bold, eye-catching debut</li>
+                            <li class="border-bottom py-2"><strong class="text-dark">Time-bound offers and sales</strong>  that change week to week</li>
+                            <li class="border-bottom py-2"> <strong class="text-dark">Events and announcements</strong> with dates and countdowns</li>
+                            <li class="pt-2"> <strong class="text-dark">Brands with multiple products</strong> to showcase in rotation</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 4: How Does Digital Fit With Your Other Outdoor Media? -->
+                    <div class="content-card text-center wow fadeInUp">
+                        <h2 class="mb-3 text-dark fw-bold fs-3">How Does Digital Fit With Your Other Outdoor Media?</h2>
+                        <p class="text-muted mb-0" style="line-height: 1.8;">
+                            Digital screens work best as part of a wider plan. Static hoardings from experienced <a href="/hoarding-advertising-agencies/" class="fw-bold text-dark text-decoration-none">hoarding advertising agencies</a> deliver long-term highway presence. Storefront work from a <a href="/retail-branding-agency-in-india/" class="fw-bold text-dark text-decoration-none">retail branding agency in India</a> makes your store easy to recognise. As one of Jaipur's established <a href="/" class="fw-bold text-dark text-decoration-none">outdoor advertising companies</a>, we bring digital, static and store branding together under one roof.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Main Content End -->
+
+
+    <!-- Gallery Section Start (Dynamic Rendering via JavaScript Array) -->
+    <div class="container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="fw-medium text-uppercase text-primary mb-2">Our Gallery</p>
+                <h1 class="display-5 mb-4">Explore Our Work Snapshots</h1>
+            </div>
+            
+            <!-- Gallery container jahan JavaScript se images load hongi -->
+            <div id="galleryContainer"></div>
+        </div>
+    </div>
+    <!-- Gallery Section End -->
+
+
+    <!-- FAQ Section Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
+                <span class="badge bg-light text-primary border px-3 py-2 rounded-pill fw-bold mb-2">● FAQ</span>
+                <h1 class="display-5 mb-4 fw-bold">Frequently asked questions</h1>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-card active" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>What is an LED advertising screen?</span>
+                            <span class="faq-icon">×</span>
+                        </div>
+                        <p class="faq-answer">It is a high-definition digital display used in public spaces to show moving, changeable advertisements such as videos, animations and rotating offers.</p>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-card" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>What is digital hoarding advertising?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <p class="faq-answer">It is outdoor hoarding advertising on a digital LED screen instead of a printed board. The content can be changed and scheduled without reprinting.</p>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-card" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>Can the content on the screen be changed?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <p class="faq-answer">Yes. Digital screens allow real-time content updates, so you can refresh offers, visuals and messages whenever you need.</p>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-card" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>Where do LED advertising screens work best?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <p class="faq-answer">In high-footfall areas where many people pass by and moving visuals can catch attention quickly.</p>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-card" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>How do I get a quote?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <p class="faq-answer">Call +91 93512 17939 or +91 77339 99071, or email supremead.jaipur@gmail.com.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Call to Action Card -->
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-9 text-center content-card bg-primary text-white py-5">
+                    <h2 class="text-white fw-bold mb-3">Ready to Bring Your Brand to Life on Screen?</h2>
+                    <p class="text-light mb-4">Share your campaign goal and target area. Our team will suggest the right digital display solution for your brand. Get a free quote today.</p>
+                    <a href="/#contact" class="btn btn-light text-primary px-4 py-2 fw-bold rounded-pill">Get A Free Quote</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- FAQ Section End -->
+
+
+    <!-- Fullscreen Image Modal (Lightbox) -->
+    <div id="imageModal">
+        <span class="image-modal-close" onclick="closeModal()">&times;</span>
+        <button class="modal-nav-btn modal-prev" onclick="changeImage(-1)">&#10094;</button>
+        <img class="image-modal-content" id="modalImage">
+        <button class="modal-nav-btn modal-next" onclick="changeImage(1)">&#10095;</button>
+    </div>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s"
+        style="background: #1e75c2 !important;">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Our Office</h5>
+                    <p class="mb-2 text-white"><i class="fa fa-map-marker-alt me-3"></i>Plot NO.99 Kamla Nehru Nagar, Hasanpura-C</p>
+                    <p class="mb-2 text-white"><i class="fa fa-phone-alt me-3"></i>+91 93512 17939 , +91 77339 99071</p>
+                    <p class="mb-2 text-white"><i class="fa fa-envelope me-3"></i>supremead.jaipur@gmail.com</p>
+                    <div class="d-flex pt-3">
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <a class="btn btn-link text-white" href="about.html">About Us</a>
+                    <a class="btn btn-link text-white" href="/#contact">Contact Us</a>
+                    <a class="btn btn-link text-white" href="/#service">Our Services</a>
+                    <a class="btn btn-link text-white" href="#">Terms & Condition</a>
+                    <a class="btn btn-link text-white" href="#">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Business Hours</h5>
+                    <p class="mb-1 text-white">Monday - Saturday :-</p>
+                    <h6 class="text-light">10:00 am - 08:00 pm</h6>
+                    <p class="mb-1 text-white">Sunday :-</p>
+                    <h6 class="text-light">Closed</h6>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Newsletter</h5>
+                    <p class="text-white">Stay updated with our latest media campaigns and advertising innovations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright bg-dark py-4" style="background: #1e75c2 !important;">
+        <div class="container text-center">
+            <p class="mb-2 text-white">Copyright &copy; All Rights Reserved.</p>
+            <p class="mb-0 text-white">
+                Designed & Developed by <a class="fw-semi-bold text-white" href="https://digitalwhopper.com/">Digital Whopper</a>
+            </p>
+        </div>
+    </div>
+    <!-- Copyright End -->
+<!-- Static/Fixed WhatsApp Button (Bottom Left) -->
+<a href="https://wa.me/917733999071" target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp"
+    style="position: fixed !important; bottom: 30px !important; left: 30px !important; z-index: 999999 !important; background-color: #25D366 !important; width: 60px !important; height: 60px !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; box-shadow: 0px 4px 15px rgba(0,0,0,0.3) !important; text-decoration: none !important; cursor: pointer !important;">
+    <!-- Official WhatsApp SVG Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="#ffffff">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.483.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+</a>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../lib/wow/wow.min.js"></script>
+    <script src="../../lib/easing/easing.min.js"></script>
+    <script src="../../lib/waypoints/waypoints.min.js"></script>
+    <script src="../../lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../../lib/counterup/counterup.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="../../js/main.js"></script>
+
+    <!-- Script for Dynamic Gallery Rendering, Lightbox & FAQ Toggle -->
+    <script>
+        const galleryImages = [
+            "../../img/doh/1.jpeg",
+            "../../img/doh/2.jpeg",
+            "../../img/doh/3.jpeg",
+            "../../img/doh/4.jpeg",
+            "../../img/doh/5.jpeg",
+        ];
+
+        let currentIndex = 0;
+
+        function renderGallery() {
+            const container = document.getElementById("galleryContainer");
+            let html = "";
+            
+            for (let i = 0; i < galleryImages.length; i += 6) {
+                html += '<div class="row g-2 justify-content-center">';
+                for (let j = i; j < i + 6 && j < galleryImages.length; j++) {
+                    html += `
+                        <div class="col-custom-gallery">
+                            <img src="${galleryImages[j]}" alt="Gallery Image ${j+1}" class="gallery-img shadow-sm" onclick="openModal(${j})">
+                        </div>
+                    `;
+                }
+                html += '</div>';
+            }
+            container.innerHTML = html;
+        }
+
+        window.onload = function() {
+            renderGallery();
+        };
+
+        function openModal(index) {
+            currentIndex = index;
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImg.src = galleryImages[currentIndex];
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= galleryImages.length) {
+                currentIndex = 0; 
+            } else if (currentIndex < 0) {
+                currentIndex = galleryImages.length - 1; 
+            }
+            document.getElementById("modalImage").src = galleryImages[currentIndex];
+        }
+
+        // FAQ Toggle Function
+        function toggleFaq(element) {
+            const icon = element.querySelector('.faq-icon');
+            const isActive = element.classList.contains('active');
+
+            if (isActive) {
+                element.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                element.classList.add('active');
+                icon.textContent = '×';
+            }
+        }
+    </script>
+</body>
+
+</html>
