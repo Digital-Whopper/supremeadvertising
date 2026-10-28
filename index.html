@@ -93,7 +93,29 @@
 <style>
     .accordion-button{
         color: #1e88e5;
-    background-color: #0194d817;
+        background-color: #0194d817;
+    }
+    /* Responsive Carousel Image Handling */
+    .carousel-item img {
+        object-fit: cover;
+        max-height: 85vh;
+        width: 100%;
+    }
+    @media (max-width: 768px) {
+        .carousel-item img.desktop-img {
+            display: none !important;
+        }
+        .carousel-item img.mobile-img {
+            display: block !important;
+        }
+    }
+    @media (min-width: 769px) {
+        .carousel-item img.mobile-img {
+            display: none !important;
+        }
+        .carousel-item img.desktop-img {
+            display: block !important;
+        }
     }
 </style>
 <body>
@@ -143,15 +165,17 @@
                 <a href="#" class="nav-item nav-link active">Home</a>
                 <a href="#about" class="nav-item nav-link">About</a>
                 <!-- Services Dropdown Start -->
-  <div class="nav-item dropdown">
-    <a href="/#service" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
-    <div class="dropdown-menu m-0 shadow-sm border-0">
-        <a href="/service/hoarding-advertising-agencies" class="dropdown-item">Billboards & Large Format Displays</a>
-        <a href="/service/retail-branding-agency-in-india" class="dropdown-item">Complete Store Branding</a>
-        <a href="/service/led-advertising-screen" class="dropdown-item">Digital Out-of-Home (DOOH)</a>
-    </div>
-</div>
-<!-- Services Dropdown End -->
+                <div class="nav-item dropdown">
+                    <a href="/#service" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+                    <div class="dropdown-menu m-0 shadow-sm border-0">
+                        <a href="/service/hoarding-advertising-agencies" class="dropdown-item">Billboards & Large Format Displays</a>
+                        <a href="/service/retail-branding-agency-in-india" class="dropdown-item">Complete Store Branding</a>
+                        <a href="/service/led-advertising-screen" class="dropdown-item">Digital Out-of-Home (DOOH)</a>
+                         <a href="/service/signage" class="dropdown-item">Store Signage & Name Boards</a>
+
+                    </div>
+                </div>
+                <!-- Services Dropdown End -->
                 <a href="gallery/" class="nav-item nav-link">Gallery</a>
                 <a href="career" class="nav-item nav-link">Career</a>
                 <a href="#contact" class="nav-item nav-link">Contact</a>
@@ -178,7 +202,7 @@
                                     <h1 class="display-1 text-white animated slideInRight">SUPREME ADVERTISING</h1>
                                     <p class="mb-5">Strategic Advertising agency elevating brands through iconic media.
                                     </p>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
+                                    <a href="/service/hoarding-advertising-agencies/" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
                                 </div>
                             </div>
                         </div>
@@ -194,14 +218,14 @@
                                         of Working Experience</p>
                                     <h1 class="display-1 text-white mb-5 animated slideInRight">The Best Reliable
                                         Industry Solution</h1>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
+                                    <a href="/service/retail-branding-agency-in-india/" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="img/store-branding/14-1.jpeg" alt="Image">
+                    <img class="w-100" src="img/store-branding/14.jpeg" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-center">
@@ -209,7 +233,7 @@
                                     <p class="fs-5 fw-medium text-white text-uppercase animated slideInRight">25+ years
                                         of Working Experience</p>
                                     <h1 class="display-1 text-white mb-5 animated slideInRight">The Smartest Advertising Solution</h1>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
+                                    <a href="/service/led-advertising-screen/" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
                                 </div>
                             </div>
                         </div>
@@ -224,14 +248,17 @@
                                     <p class="fs-5 fw-medium text-white text-uppercase animated slideInRight">25+ years
                                         of Working Experience</p>
                                     <h1 class="display-1 text-white mb-5 animated slideInRight">The Complete Branding Solution</h1>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
+                                    <a href="/service/retail-branding-agency-in-india/" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="img/billboards/19-1.jpeg" alt="Image">
+                    <!-- Desktop Image -->
+                    <img class="w-100 desktop-img" src="img/billboards/19-1.jpeg" alt="Highway Advertising Desktop">
+                    <!-- Mobile Image (Aap yahan apni mobile specific image ka path de sakte hain) -->
+                    <img class="w-100 mobile-img" src="img/banner-home.png" alt="Highway Advertising Mobile">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-center">
@@ -239,7 +266,7 @@
                                     <p class="fs-5 fw-medium text-white text-uppercase animated slideInRight">25+ years
                                         of Working Experience</p>
                                     <h1 class="display-1 text-white mb-5 animated slideInRight">Highway Advertising That Builds Brands</h1>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
+                                    <a href="/service/hoarding-advertising-agencies/" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
                                 </div>
                             </div>
                         </div>
@@ -283,19 +310,19 @@
                         quality, reliability, and creative outdoor media solutions. With years of industry expertise,
                         Supreme Advertising continues to help brands capture attention and create a lasting impression
                         in the real world.</p>
-                    <div class="d-flex align-items-center mb-4">
-                        <div class="flex-shrink-0 bg-primary p-4">
-                            <h1 class="display-2" style="color: white !important;">25+</h1>
+                    <div class="d-flex align-items-center mb-4 flex-wrap">
+                        <div class="flex-shrink-0 bg-primary p-4 mb-3 mb-sm-0">
+                            <h1 class="display-2 text-white" style="color: white !important;">25+</h1>
                             <h5 class="text-white">Years of</h5>
                             <h5 class="text-white">Experience</h5>
                         </div>
-                        <div class="ms-4">
+                        <div class="ms-sm-4">
                             <p><i class="fa fa-check text-primary me-2"></i>Trusted Legacy Since 1999</p>
                             <p><i class="fa fa-check text-primary me-2"></i>Expert Leadership</p>
                             <p><i class="fa fa-check text-primary me-2"></i>Specialized Solutions</p>
                         </div>
                     </div>
-                    <div class="row pt-2">
+                    <div class="row pt-2 g-3">
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
@@ -303,7 +330,7 @@
                                 </div>
                                 <div class="ms-3">
                                     <p class="mb-2">Email us</p>
-                                    <h5 class="mb-0">supremead.jaipur@gmail.com</h5>
+                                    <h6 class="mb-0 text-break">supremead.jaipur@gmail.com</h6>
                                 </div>
                             </div>
                         </div>
@@ -314,7 +341,7 @@
                                 </div>
                                 <div class="ms-3">
                                     <p class="mb-2">Call us</p>
-                                    <h5 class="mb-0">+91 93512 17939 , +91 77339 99071</h5>
+                                    <h6 class="mb-0">+91 93512 17939 , +91 77339 99071</h6>
                                 </div>
                             </div>
                         </div>
@@ -422,9 +449,9 @@
                 <h1 class="display-5 mb-4">We Provide Best Advertising Services</h1>
             </div>
             <div class="row gy-5 gx-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item">
-                        <img class="img-fluid" src="img/service-1.jpg" alt="">
+                        <img class="img-fluid" src="img/billboards/5-1.jpg" alt="">
                         <div class="service-img">
                             <img class="img-fluid" style="height: 100%;" src="img/billboards/12.png" alt="">
                         </div>
@@ -435,15 +462,16 @@
                                 <hr class="w-25">
                             </div>
                             <div class="service-text">
-                                <p class="text-white mb-0">When reach matters most, large-format outdoor media delivers. As one of Rajasthan's experienced hoarding advertising agencies, we place high-impact hoardings along highways and busy city routes. Each display is built to withstand harsh weather and keep its colours sharp.</p>
+                                <p class="text-white mb-0">High-impact highway and city hoardings built to withstand weather and deliver maximum brand reach.</p>
+                                <!-- <p class="text-white mb-0">When reach matters most, large-format outdoor media delivers. As one of Rajasthan's experienced hoarding advertising agencies, we place high-impact hoardings along highways and busy city routes. Each display is built to withstand harsh weather and keep its colours sharp.</p> -->
                             </div>
                         </div>
-                        <a class="btn btn-light" href="hoarding-advertising-agencies">Read More</a>
+                        <a class="btn btn-light" href="service/hoarding-advertising-agencies">Read More</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item">
-                        <img class="img-fluid" src="img/service-2.jpg" alt="">
+                        <img class="img-fluid" src="img/store-branding/2-1.jpg" alt="">
                         <div class="service-img">
                             <img class="img-fluid" style="height: 100%;" src="img/store-branding/1.jpeg" alt="">
                         </div>
@@ -454,15 +482,16 @@
                                 <hr class="w-25">
                             </div>
                             <div class="service-text">
-                                <p class="text-white mb-0">Your store is your strongest sales tool. As a retail branding agency in India with its own production capability, we handle every visual touchpoint. That includes LED signboards, ACP cladding, glass frosting, in-store display units and promotional graphics. The result is a brand that stands out from the street to the billing counter.</p>
+                                <p class="text-white mb-0">Transform your retail space with complete storefront styling, ACP cladding, and in-house display units.</p>
+                                <!-- <p class="text-white mb-0">Your store is your strongest sales tool. As a retail branding agency in India with its own production capability, we handle every visual touchpoint. That includes LED signboards, ACP cladding, glass frosting, in-store display units and promotional graphics. The result is a brand that stands out from the street to the billing counter.</p> -->
                             </div>
                         </div>
-                        <a class="btn btn-light" href="retail-branding-agency-in-india">Read More</a>
+                        <a class="btn btn-light" href="service/retail-branding-agency-in-india">Read More</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item">
-                        <img class="img-fluid" src="img/service-1.jpg" alt="">
+                        <img class="img-fluid" src="img/doh/1-1.jpg" alt="">
                         <div class="service-img">
                             <img class="img-fluid" style="height: 100%; width: 100%;"  src="img/doh/1.jpeg" alt="">
                         </div>
@@ -473,10 +502,31 @@
                                 <hr class="w-25">
                             </div>
                             <div class="service-text">
-                                <p class="text-white mb-0">Static is no longer the only option. With a high-definition led advertising screen, your brand can run motion-led campaigns, update content in real time and grab attention in high-footfall areas.</p>
+                                <p class="text-white mb-0">Run dynamic motion campaigns and real-time content updates on high-definition LED advertising screens.</p>
+                                <!-- <p class="text-white mb-0">Static is no longer the only option. With a high-definition led advertising screen, your brand can run motion-led campaigns, update content in real time and grab attention in high-footfall areas.</p> -->
                             </div>
                         </div>
-                        <a class="btn btn-light" href="led-advertising-screen">Read More</a>
+                        <a class="btn btn-light" href="service/led-advertising-screen">Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item">
+                        <img class="img-fluid" src="img/signage/2.jpeg" alt="">
+                        <div class="service-img">
+                            <img class="img-fluid" style="height: 100%; width: 100%;"  src="img/signage/2.jpeg" alt="">
+                        </div>
+                        <div class="service-detail">
+                            <div class="service-title">
+                                <hr class="w-25">
+                                <h3 class="mb-0">Signage</h3>
+                                <hr class="w-25">
+                            </div>
+                            <div class="service-text">
+                                <p class="text-white mb-0">Custom-crafted 3D glowing LED letter boards and ACP acrylic name signs for day-and-night brand prominence.</p>
+                                <!-- <p class="text-white mb-0">Make your storefront impossible to miss with custom-crafted signage. From eye-catching 3D glowing LED letters and ACP acrylic boards to elegant vintage marquee light signs, our in-house fabrication delivers high-impact illuminated and non-illuminated display signage designed for day-and-night brand prominence.</p> -->
+                            </div>
+                        </div>
+                        <a class="btn btn-light" href="service/signage">Read More</a>
                     </div>
                 </div>
             </div>
@@ -752,7 +802,7 @@
         <!-- Why Do Brands Keep Choosing Us After 25+ Years? -->
         <div class="row g-5 align-items-center mb-5">
             <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="bg-light p-5 rounded">
+                <div class="bg-light p-4 p-md-5 rounded">
                     <h2 class="mb-4 text-center">Why Do Brands Keep Choosing Us After 25+ Years?</h2>
                     <div class="row g-4">
                         <div class="col-md-6">
@@ -808,46 +858,24 @@
 
         <!-- How Does In-House Fabrication Make a Difference -->
         <div class="row justify-content-center mb-5">
-            <div class="col-lg-10 text-center wow fadeInUp" data-wow-delay="0.1s" style="margin-top: 5rem;">
+            <div class="col-lg-10 text-center wow fadeInUp px-3" data-wow-delay="0.1s" style="margin-top: 4rem;">
                 <h2 class="mb-4">How Does In-House Fabrication Make a Difference to Your Campaign?</h2>
                 <p class="text-muted mb-4">Every board, sign and display we deliver is produced by our own team. Supreme Advertising runs two dedicated fabrication units in Bindayaka and Khatipura, Jaipur, alongside our head office in Hasanpura. That means:</p>
                 <div class="d-flex flex-wrap justify-content-center gap-3">
-                    <span class="badge bg-primary p-3 fs-6">Design, fabrication and installation stay under one roof</span>
-                    <span class="badge bg-primary p-3 fs-6">Closer quality control on every board, sign and display</span>
-                    <span class="badge bg-primary p-3 fs-6">One point of contact from concept to final installation</span>
+                    <span class="badge bg-primary p-3 fs-6 text-wrap text-center">Design, fabrication and installation stay under one roof</span>
+                    <span class="badge bg-primary p-3 fs-6 text-wrap text-center">Closer quality control on every board, sign and display</span>
+                    <span class="badge bg-primary p-3 fs-6 text-wrap text-center">One point of contact from concept to final installation</span>
                 </div>
             </div>
         </div>
 
         <!-- Is Outdoor Advertising in India Still Worth It -->
         <div class="row justify-content-center mb-5">
-            <div class="col-lg-10 text-center wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-10 text-center wow fadeInUp">
                 <h2 class="mb-4">Is Outdoor Advertising in India Still Worth It in a Digital-First World?</h2>
                 <p class="text-muted">Absolutely. Outdoor advertising in India reaches audiences that can't skip, scroll past or block it. A well-placed hoarding works around the clock. A branded storefront influences buyers at the moment of purchase. Digital screens bring the flexibility of online ads to physical spaces. For brands that want lasting recall, outdoor media remains one of the most dependable channels available.</p>
             </div>
         </div>
-
-        <!-- Numbers Counter Section -->
-        <!-- <div class="row g-4 text-center mb-5">
-            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="border p-4 rounded bg-white shadow-sm">
-                    <h2 class="display-4 text-primary mb-0">25+</h2>
-                    <p class="text-uppercase fw-bold mb-0">Years of Experience</p>
-                </div>
-            </div>
-            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="border p-4 rounded bg-white shadow-sm">
-                    <h2 class="display-4 text-primary mb-0">70+</h2>
-                    <p class="text-uppercase fw-bold mb-0">Team Members</p>
-                </div>
-            </div>
-            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="border p-4 rounded bg-white shadow-sm">
-                    <h2 class="display-4 text-primary mb-0">200+</h2>
-                    <p class="text-uppercase fw-bold mb-0">Companies Served</p>
-                </div>
-            </div>
-        </div> -->
 
         <!-- Frequently Asked Questions -->
         <div class="row justify-content-center mb-5">
@@ -920,7 +948,7 @@
 
         <!-- Ready to Make Your Brand Impossible to Miss -->
         <div class="row justify-content-center text-center">
-            <div class="col-lg-8 bg-primary text-white p-5 rounded wow fadeInUp" data-wow-delay="0.1s" style="background: #1e75c2 !important;">
+            <div class="col-lg-8 bg-primary text-white p-4 p-md-5 rounded wow fadeInUp" data-wow-delay="0.1s" style="background: #1e75c2 !important;">
                 <h2 class="text-white mb-3">Ready to Make Your Brand Impossible to Miss?</h2>
                 <p class="fs-5 mb-4 text-white">Tell us where you want to be seen, and our team will build the right outdoor solution for your brand. Get a free quote today.</p>
                 <a href="#contact" class="btn btn-light py-3 px-5 fw-bold text-primary">Get A Free Quote</a>
